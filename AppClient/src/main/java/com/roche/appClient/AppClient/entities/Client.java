@@ -25,6 +25,16 @@ public class Client {
     @ManyToOne(fetch = FetchType.EAGER)
     private Membership membership;
 
+    private Date nextRenewal;
+
+    public Date getNextRenewal() {
+        return nextRenewal;
+    }
+
+    public void setNextRenewal(Date nextRenewal) {
+        this.nextRenewal = nextRenewal;
+    }
+
     public Long getId() {
         return id;
     }
