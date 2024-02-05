@@ -3,9 +3,11 @@ package com.roche.appClient.AppClient.service;
 import com.roche.appClient.AppClient.entities.Client;
 import com.roche.appClient.AppClient.repository.IClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClientServiceImpl implements IClientService {
 
     @Autowired

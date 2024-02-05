@@ -17,8 +17,6 @@ public enum Constant {
     SHIPMENT("shipment"),
 
     SHIPMENTS("shipments"),
-
-    SHIPMENT_DELETED("shipmentDeleted"),
     MESSAGE_SECCESS("Ejecucion Realizada Correctamente"),
     MESSAGE_ERROR("Ocurrio un Error! Fallido"),
     MESSAGE_EMPTY_ELEMENTS("No Existen Valores"),

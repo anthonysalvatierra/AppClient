@@ -3,9 +3,11 @@ package com.roche.appClient.AppClient.service;
 import com.roche.appClient.AppClient.entities.Membership;
 import com.roche.appClient.AppClient.repository.IMembershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MembershipServiceImpl implements IMembershipService {
 
     @Autowired
