@@ -2,8 +2,8 @@ package com.roche.appClient.AppClient.controller;
 
 import com.roche.appClient.AppClient.entities.Client;
 import com.roche.appClient.AppClient.entities.Membership;
-import com.roche.appClient.AppClient.service.IClientService;
-import com.roche.appClient.AppClient.service.IMembershipService;
+import com.roche.appClient.AppClient.service.Iservice.IClientService;
+import com.roche.appClient.AppClient.service.Iservice.IMembershipService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

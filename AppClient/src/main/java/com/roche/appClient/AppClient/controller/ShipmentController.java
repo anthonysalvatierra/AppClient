@@ -1,13 +1,14 @@
 package com.roche.appClient.AppClient.controller;
 
 import com.roche.appClient.AppClient.entities.Client;
+import com.roche.appClient.AppClient.entities.Product;
 import com.roche.appClient.AppClient.entities.ProductShipment;
-import com.roche.appClient.AppClient.service.IProductShipmentService;
-import com.roche.appClient.AppClient.utils.UtilService;
+import com.roche.appClient.AppClient.service.Iservice.IProductShipmentService;
+import static com.roche.appClient.AppClient.utils.UtilService.*;
 import com.roche.appClient.AppClient.entities.Shipment;
-import com.roche.appClient.AppClient.service.IClientService;
-import com.roche.appClient.AppClient.service.IProductService;
-import com.roche.appClient.AppClient.service.IShipmentService;
+import com.roche.appClient.AppClient.service.Iservice.IClientService;
+import com.roche.appClient.AppClient.service.Iservice.IProductService;
+import com.roche.appClient.AppClient.service.Iservice.IShipmentService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,7 +110,6 @@ public class ShipmentController {
         Client client;
         List<Integer> idsProducts;
         Shipment shipment;
-        UtilService util = new UtilService();
 
         try{
 
@@ -118,7 +118,7 @@ public class ShipmentController {
 
             if(client != null && idsProducts != null){
 
-                shipment = util.verify(client, idsProducts, "");
+                shipment = verify(client, idsProducts, "");
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
@@ -189,7 +189,6 @@ public class ShipmentController {
         Client client;
         List<Integer> idsProducts;
         Shipment shipment;
-        UtilService util = new UtilService();
 
         try{
 
@@ -198,7 +197,7 @@ public class ShipmentController {
 
             if(client != null && idsProducts != null){
 
-                shipment = util.verify(client, idsProducts, id);
+                shipment = verify(client, idsProducts, id);
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
@@ -226,5 +225,42 @@ public class ShipmentController {
 
     }
 
+    @ResponseBody
+    @RequestMapping("/deleteProductShipment")
+    public ResponseEntity<?> deleteProductShipment(@RequestParam String idPruduct,
+                                                   @RequestParam String idShipment){
 
+        Product product;
+        Shipment shipment;
+        Map<String, Object> response = new HashMap<>();
+
+        try{
+
+            product = this.productService.findById(Long.parseLong(idPruduct));
+            shipment = this.shipmentService.findById(Long.parseLong(idShipment));
+
+            List<ProductShipment> productShipments = this.productShipmentService.findAllByProductIdAndShipmentId(product, shipment);
+
+            if(productShipments == null){
+                response.put(MESSAGE.getMessage(), MESSAGE_EMPTY_ELEMENTS.getMessage());
+                log.info(MESSAGE_EMPTY_ELEMENTS.getMessage() + " " + ELEMENT_DOES_NOT_EXIST);
+                return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+            }
+
+            for(ProductShipment productShipment: productShipments){
+
+                this.productShipmentService.deleteById(productShipment.getId());
+
+            }
+
+        }catch (Exception e){
+            response.put(MESSAGE.getMessage(), SENTENCE_ERROR.getMessage());
+            log.debug(SENTENCE_ERROR.getMessage() + e.getMessage() + " " + MESSAGE_ERROR.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+
+    }
 }

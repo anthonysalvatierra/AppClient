@@ -1,4 +1,4 @@
-package com.roche.appClient.AppClient.service;
+package com.roche.appClient.AppClient.service.Iservice;
 
 import com.roche.appClient.AppClient.entities.Product;
 

@@ -1,7 +1,8 @@
-package com.roche.appClient.AppClient.service;
+package com.roche.appClient.AppClient.service.serviceImpl;
 
 import com.roche.appClient.AppClient.entities.Client;
 import com.roche.appClient.AppClient.repository.IClientRepository;
+import com.roche.appClient.AppClient.service.Iservice.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
