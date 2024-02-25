@@ -29,7 +29,7 @@ public class ClientController {
     private IMembershipService membershipService;
 
 
-    @GetMapping(name = "/findAll")
+    @GetMapping("/findAll")
     @ResponseBody
     public ResponseEntity<?> findAllClient(){
 
@@ -40,7 +40,7 @@ public class ClientController {
             clients = this.clientService.findAll();
         }catch(Exception e){
             log.debug(SENTENCE_ERROR.getMessage() + e.getMessage());
-            response.put(MESSAGE.getMessage(), MESSAGE_ERROR);
+            response.put(MESSAGE.getMessage(), MESSAGE_ERROR.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
@@ -50,14 +50,14 @@ public class ClientController {
             return new ResponseEntity<>(response, HttpStatus.OK);
         }
 
-        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS);
+        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS.getMessage());
         response.put(CLIENTS.getMessage(), clients);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }
 
-    @RequestMapping(name = "/findById/{id}", method = RequestMethod.GET)
+    @RequestMapping("/findById/{id}")
     @ResponseBody
     public ResponseEntity<?> findById(@PathVariable String id){
 
@@ -69,7 +69,7 @@ public class ClientController {
             client = this.clientService.findById(Long.parseLong(id));
 
         }catch(Exception e){
-            response.put(MESSAGE.getMessage(), MESSAGE_ERROR);
+            response.put(MESSAGE.getMessage(), MESSAGE_ERROR.getMessage());
             log.debug(SENTENCE_ERROR.getMessage() + e.getMessage());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -86,7 +86,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping(name = "/save", method = RequestMethod.POST)
+    @RequestMapping("/save")
     @ResponseBody
     public ResponseEntity<?> save(@RequestBody Client client){
 
@@ -110,7 +110,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping(name = "/delete/{id}")
+    @RequestMapping("/delete/{id}")
     @ResponseBody
     public ResponseEntity<?> delete(@PathVariable String id){
 
@@ -137,7 +137,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping(name = "/edit", method = RequestMethod.PUT)
+    @RequestMapping("/edit")
     @ResponseBody
     public ResponseEntity<?> edit(@RequestParam String id, @RequestBody Client client){
 

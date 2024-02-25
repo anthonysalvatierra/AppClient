@@ -14,13 +14,16 @@ public class Shipment {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "client")
     private Client client;
 
     private Double totalCost;
 
+    @Column(name = "delivery_date")
     private Date deliveryDate;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "id")
+    @JoinColumn(name = "product")
     private List<Product> products;
 
     public Long getId() {

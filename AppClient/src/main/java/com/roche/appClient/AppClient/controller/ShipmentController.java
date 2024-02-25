@@ -122,7 +122,7 @@ public class ShipmentController {
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
-                log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS);
+                log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS.getMessage());
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
 
@@ -136,11 +136,11 @@ public class ShipmentController {
 
         if(shipment == null){
             response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
-            log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS);
+            log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS.getMessage());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
 
-        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS);
+        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS.getMessage());
         response.put(SHIPMENT.getMessage(), shipment);
         return new ResponseEntity<>(response, HttpStatus.OK);
 
@@ -201,7 +201,7 @@ public class ShipmentController {
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
-                log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS);
+                log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS.getMessage());
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
 
@@ -215,11 +215,11 @@ public class ShipmentController {
 
         if(shipment == null){
             response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
-            log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS);
+            log.info(ELEMENT_DOES_NOT_EXIST.getMessage() + " " + MESSAGE_EMPTY_ELEMENTS.getMessage());
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
 
-        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS);
+        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS.getMessage());
         response.put(SHIPMENT.getMessage(), shipment);
         return new ResponseEntity<>(response, HttpStatus.OK);
 
@@ -243,7 +243,7 @@ public class ShipmentController {
 
             if(productShipments == null){
                 response.put(MESSAGE.getMessage(), MESSAGE_EMPTY_ELEMENTS.getMessage());
-                log.info(MESSAGE_EMPTY_ELEMENTS.getMessage() + " " + ELEMENT_DOES_NOT_EXIST);
+                log.info(MESSAGE_EMPTY_ELEMENTS.getMessage() + " " + ELEMENT_DOES_NOT_EXIST.getMessage());
                 return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
             }
 
@@ -259,7 +259,7 @@ public class ShipmentController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS);
+        response.put(MESSAGE.getMessage(), MESSAGE_SECCESS.getMessage());
         return new ResponseEntity<>(response, HttpStatus.OK);
 
     }

@@ -14,6 +14,7 @@ public class Product {
 
     private Double cost;
 
+    @Column(name = "min_priory")
     private Integer minPriority;
 
     public Long getId() {

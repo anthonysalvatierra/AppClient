@@ -20,11 +20,14 @@ public class Client {
 
     private String email;
 
+    @Column(name = "last_delivery")
     private Date lastDelivery;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "membership")
     private Membership membership;
 
+    @Column(name = "next_renewal")
     private Date nextRenewal;
 
     public Date getNextRenewal() {
