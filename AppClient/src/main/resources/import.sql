@@ -31,7 +31,7 @@ insert into product (name, cost, min_priory) values ('vehiculo', 3.58, 18);
 insert into product (name, cost, min_priory) values ('centro de mesa', 1.10, 19);
 insert into product (name, cost, min_priory) values ('mesa de noche', 3.10, 20);
 
-insert into client (name, lastname, dni, email, last_delivery, membership, next_renewal) values ('Tracey', 'Luscombe', 'vulputate', 'tluscombe0@gravatar.com', '2023-05-07', 1, '2023-11-21');
+insert into client (name, lastname, dni, email, last_delivery, membership, next_renewal) values ('Tracey', 'Luscombe', 'vulputate', 'tluscombe0@gravatar.com', '2023-05-07', 1, '2027-11-21');
 insert into client (name, lastname, dni, email, last_delivery, membership, next_renewal) values ('Wren', 'Haining', 'ut', 'whaining1@sitemeter.com', '2024-01-18', 3, '2023-09-11');
 insert into client (name, lastname, dni, email, last_delivery, membership, next_renewal) values ('Cari', 'Milazzo', 'ligula', 'cmilazzo2@addtoany.com', '2024-01-03', 4, '2023-09-26');
 insert into client (name, lastname, dni, email, last_delivery, membership, next_renewal) values ('Geno', 'Rosenstein', 'nisl', 'grosenstein3@wiley.com', '2023-10-28', 2, '2023-05-16');

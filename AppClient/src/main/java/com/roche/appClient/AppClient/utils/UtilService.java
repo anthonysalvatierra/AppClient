@@ -19,17 +19,15 @@ import java.util.List;
 public class UtilService {
 
     @Autowired
-    private static IProductService productService;
+    private IProductService productService;
 
     @Autowired
-    private static IProductShipmentService productShipmentService;
+    private IProductShipmentService productShipmentService;
 
     @Autowired
-    private static IShipmentService shipmentService;
+    private IShipmentService shipmentService;
 
-    private UtilService(){}
-
-    public static Shipment verify(Client client, List<Integer> idsProducts, String id){
+    public Shipment verify(Client client, List<Long> idsProducts, String id){
 
         Shipment shipment;
         Shipment shipmentSaved = null;
@@ -37,7 +35,7 @@ public class UtilService {
         if(id.equals("")){
             shipment = new Shipment();
         }else{
-            shipment = UtilService.shipmentService.findById(Long.parseLong(id));
+            shipment = this.shipmentService.findById(Long.parseLong(id));
         }
 
         Date date = new Date();
@@ -56,7 +54,7 @@ public class UtilService {
             validationPriory(shipment, client, calendar, priory);
             shipment.setTotalCost(acum);
 
-            shipmentSaved = UtilService.shipmentService.save(shipment);
+            shipmentSaved = this.shipmentService.save(shipment);
             saveProductShipmentRelation(productList, shipment);
 
         }
@@ -64,10 +62,10 @@ public class UtilService {
         return shipmentSaved;
     }
 
-    public static Double validatePriory(List<Integer> idsProducts, Client client, Double acum, List<Product> products){
+    public Double validatePriory(List<Long> idsProducts, Client client, Double acum, List<Product> products){
 
-        for (Integer idProduct : idsProducts) {
-            Product product = productService.findById(Long.parseLong(String.valueOf(idProduct)));
+        for (Long idProduct : idsProducts) {
+            Product product = this.productService.findById(idProduct);
             products.add(product);
             if (product != null) {
                 if (product.getMinPriority() <= client.getMembership().getPriority()) {
@@ -78,7 +76,7 @@ public class UtilService {
         return acum;
     }
 
-    public static void validationPriory(Shipment shipment, Client client, Calendar calendar, Integer priory){
+    public void validationPriory(Shipment shipment, Client client, Calendar calendar, Integer priory){
 
         if (priory > 0 && priory <= 15) {
             calendar.add(Calendar.DAY_OF_YEAR, 1);
@@ -97,12 +95,12 @@ public class UtilService {
 
     }
 
-    private static void  saveProductShipmentRelation(List<Product> productList, Shipment shipment) {
+    private void  saveProductShipmentRelation(List<Product> productList, Shipment shipment) {
         for (Product product : productList) {
             ProductShipment productoShipment = new ProductShipment();
             productoShipment.setProduct(product);
             productoShipment.setShipment(shipment);
-            UtilService.productShipmentService.save(productoShipment);
+            this.productShipmentService.save(productoShipment);
         }
     }
 

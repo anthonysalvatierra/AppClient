@@ -4,11 +4,11 @@ import com.roche.appClient.AppClient.entities.Client;
 import com.roche.appClient.AppClient.entities.Product;
 import com.roche.appClient.AppClient.entities.ProductShipment;
 import com.roche.appClient.AppClient.service.Iservice.IProductShipmentService;
-import static com.roche.appClient.AppClient.utils.UtilService.*;
 import com.roche.appClient.AppClient.entities.Shipment;
 import com.roche.appClient.AppClient.service.Iservice.IClientService;
 import com.roche.appClient.AppClient.service.Iservice.IProductService;
 import com.roche.appClient.AppClient.service.Iservice.IShipmentService;
+import com.roche.appClient.AppClient.utils.UtilService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,21 +104,22 @@ public class ShipmentController {
     @ResponseBody
     @RequestMapping("/save")
     public ResponseEntity<?> save(@RequestParam String id,
-                                  @RequestBody Object idsProdutsObject){
+                                  @RequestBody List<Long> idsProdutsObject){
 
         Map<String, Object> response = new HashMap<>();
         Client client;
-        List<Integer> idsProducts;
+        List<Long> idsProducts;
         Shipment shipment;
+        UtilService util = new UtilService();
 
         try{
 
             client = this.clientDao.findById(Long.parseLong(id));
-            idsProducts = (List<Integer>) idsProdutsObject;
+            idsProducts = idsProdutsObject;
 
             if(client != null && idsProducts != null){
 
-                shipment = verify(client, idsProducts, "");
+                shipment = util.verify(client, idsProducts, "");
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());
@@ -183,21 +184,22 @@ public class ShipmentController {
     @ResponseBody
     @RequestMapping("/edit/{id}")
     public ResponseEntity<?> edit(@RequestParam String idClient,
-                                  @RequestBody Object idsProdutsObject, @PathVariable String id){
+                                  @RequestBody List<Long> idsProdutsObject, @PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
         Client client;
-        List<Integer> idsProducts;
+        List<Long> idsProducts;
         Shipment shipment;
+        UtilService util = new UtilService();
 
         try{
 
             client = this.clientDao.findById(Long.parseLong(idClient));
-            idsProducts = (List<Integer>) idsProdutsObject;
+            idsProducts = idsProdutsObject;
 
             if(client != null && idsProducts != null){
 
-                shipment = verify(client, idsProducts, id);
+                shipment = util.verify(client, idsProducts, id);
 
             }else{
                 response.put(MESSAGE.getMessage(), ELEMENT_DOES_NOT_EXIST.getMessage());

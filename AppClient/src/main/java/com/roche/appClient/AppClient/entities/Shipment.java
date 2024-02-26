@@ -22,7 +22,7 @@ public class Shipment {
     @Column(name = "delivery_date")
     private Date deliveryDate;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "product")
     private List<Product> products;
 
