@@ -93,4 +93,18 @@ public class Client {
     public void setMembership(Membership membership) {
         this.membership = membership;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", dni='" + dni + '\'' +
+                ", email='" + email + '\'' +
+                ", lastDelivery=" + lastDelivery +
+                ", membership=" + membership +
+                ", nextRenewal=" + nextRenewal +
+                '}';
+    }
 }

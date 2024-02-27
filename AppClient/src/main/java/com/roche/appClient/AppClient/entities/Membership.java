@@ -58,4 +58,15 @@ public class Membership {
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "Membership{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", name='" + name + '\'' +
+                ", priority=" + priority +
+                ", duration=" + duration +
+                '}';
+    }
 }

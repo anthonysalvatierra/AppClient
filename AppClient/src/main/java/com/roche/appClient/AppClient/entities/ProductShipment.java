@@ -39,4 +39,13 @@ public class ProductShipment {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "ProductShipment{" +
+                "id=" + id +
+                ", shipment=" + shipment +
+                ", product=" + product +
+                '}';
+    }
 }

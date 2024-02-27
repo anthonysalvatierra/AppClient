@@ -48,4 +48,14 @@ public class Product {
     public void setMinPriority(Integer minPriority) {
         this.minPriority = minPriority;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", cost=" + cost +
+                ", minPriority=" + minPriority +
+                '}';
+    }
 }
