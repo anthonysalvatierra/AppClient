@@ -57,7 +57,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     @ResponseBody
     public ResponseEntity<?> findById(@PathVariable String id){
 
@@ -86,7 +86,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping("/save")
+    @PostMapping("/save")
     @ResponseBody
     public ResponseEntity<?> save(@RequestBody Client client){
 
@@ -110,7 +110,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
     public ResponseEntity<?> delete(@PathVariable String id){
 
@@ -137,7 +137,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping("/edit")
+    @PutMapping("/edit")
     @ResponseBody
     public ResponseEntity<?> edit(@RequestParam String id, @RequestBody Client client){
 
@@ -183,7 +183,7 @@ public class ClientController {
 
     }
 
-    @RequestMapping("/renewMembership")
+    @PutMapping("/renewMembership")
     @ResponseBody
     public ResponseEntity<?> renewMembership(@RequestParam String idClient,
                                              @RequestParam String idMembership){

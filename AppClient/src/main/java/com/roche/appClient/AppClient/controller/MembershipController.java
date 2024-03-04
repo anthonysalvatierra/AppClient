@@ -26,7 +26,7 @@ public class MembershipController {
     private IMembershipService membershipService;
 
     @ResponseBody
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public ResponseEntity<?> findAll(){
 
         Map<String, Object> response = new HashMap<>();
@@ -57,7 +57,7 @@ public class MembershipController {
     }
 
     @ResponseBody
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<?> findById(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
@@ -88,7 +88,7 @@ public class MembershipController {
     }
 
     @ResponseBody
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Membership membership){
 
         Map<String, Object> response = new HashMap<>();
@@ -119,7 +119,7 @@ public class MembershipController {
     }
 
     @ResponseBody
-    @RequestMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<?> edit(@PathVariable String id, @RequestBody Membership membership){
 
         Map<String, Object> response = new HashMap<>();
@@ -158,7 +158,7 @@ public class MembershipController {
     }
 
     @ResponseBody
-    @RequestMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteById(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();

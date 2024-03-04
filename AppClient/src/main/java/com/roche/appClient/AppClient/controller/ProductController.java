@@ -26,7 +26,7 @@ public class ProductController {
     private IProductService productService;
 
     @ResponseBody
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public ResponseEntity<?> findAll(){
 
         Map<String, Object> response = new HashMap<>();
@@ -59,7 +59,7 @@ public class ProductController {
     }
 
     @ResponseBody
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<?> findById(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
@@ -92,7 +92,7 @@ public class ProductController {
     }
 
     @ResponseBody
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<?> save(@RequestBody Product product){
 
         Map<String, Object> response = new HashMap<>();
@@ -117,7 +117,7 @@ public class ProductController {
     }
 
     @ResponseBody
-    @RequestMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
@@ -144,7 +144,7 @@ public class ProductController {
     }
 
     @ResponseBody
-    @RequestMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<?> edit(@PathVariable String id, @RequestBody Product product){
 
         Map<String, Object> response = new HashMap<>();

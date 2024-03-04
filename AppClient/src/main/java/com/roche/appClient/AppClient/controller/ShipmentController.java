@@ -39,7 +39,7 @@ public class ShipmentController {
     private IProductShipmentService productShipmentService;
 
     @ResponseBody
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public ResponseEntity<?> findAll(){
 
         Map<String, Object> response = new HashMap<>();
@@ -70,7 +70,7 @@ public class ShipmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<?> findById(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
@@ -101,7 +101,7 @@ public class ShipmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<?> save(@RequestParam String id,
                                   @RequestBody List<Long> idsProdutsObject){
 
@@ -148,7 +148,7 @@ public class ShipmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable String id){
 
         Map<String, Object> response = new HashMap<>();
@@ -182,7 +182,7 @@ public class ShipmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public ResponseEntity<?> edit(@RequestParam String idClient,
                                   @RequestBody List<Long> idsProdutsObject, @PathVariable String id){
 
@@ -227,7 +227,7 @@ public class ShipmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/deleteProductShipment")
+    @DeleteMapping("/deleteProductShipment")
     public ResponseEntity<?> deleteProductShipment(@RequestParam String idPruduct,
                                                    @RequestParam String idShipment){
 
